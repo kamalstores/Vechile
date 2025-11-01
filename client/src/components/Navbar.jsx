@@ -64,7 +64,7 @@ const Navbar = ({setShowLogin}) => {
 
             <button
               onClick={() => {
-                user ? logout() : setShowLogin(true);
+                setShowLogin(true);
               }}
               className="cursor-pointer px-8 py-2 bg-primary hover:bg-black transition-all
                text-white rounded-lg"

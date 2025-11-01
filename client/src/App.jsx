@@ -11,15 +11,12 @@ import Dashboard from './pages/owner/Dashboard';
 import AddCar from './pages/owner/AddCar';
 import ManageCars from './pages/owner/ManageCars';
 import ManageBookings from './pages/owner/ManageBookings';
+import Login from './components/Login';
 
 const App = () => {
 
 
-  // const [showLogin, setShowLogin] = useState(false)
-
-
-  // kept as state for the login modal; renamed to indicate intentionally unused here
-  const [_showLogin, setShowLogin] = useState(false)
+  const [showLogin, setShowLogin] = useState(false)
 
   // disable navbar when we in owner page
   const isOwnerPath = useLocation().pathname.startsWith('/owner')
@@ -27,7 +24,12 @@ const App = () => {
 
   return (
     <>
+
+      {showLogin && <Login setShowLogin={setShowLogin} />}
+    
       {!isOwnerPath && <Navbar setShowLogin={setShowLogin}/>}
+
+    
 
     <Routes>
       <Route path = '/' element={<Home />}/>
