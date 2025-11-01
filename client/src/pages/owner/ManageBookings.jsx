@@ -22,7 +22,8 @@ const ManageBookings = () => {
       
         <Title
             title="Manage Bookings"
-            subtitle="View all your bookings, update their details, or cancel them."
+            subTitle="View all your bookings, update their details, or cancel them."
+            align="left"
         />
 
         <div className="max-w-3xl w-full rounded-md overflow-hidden border border-borderColor mt-6">
