@@ -1,4 +1,4 @@
-import User from "../models/User.js";
+import {User} from "../models/User.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -107,6 +107,28 @@ export const loginUser = async (req, res) => {
             token
         })
         
+    } catch (error) {
+        console.error(error.message);
+        res.json({
+            success : false,
+            message: error.message
+        })
+    }
+}
+
+// function to get user details using jwt token
+export const getUserData = async (req, res) => {
+    try {
+        
+        // get user id from request object 
+        const {user} = req;
+
+        // send user data as response through middleware
+        res.status(200).json({
+            success : true,
+            user
+        })
+
     } catch (error) {
         console.error(error.message);
         res.json({
