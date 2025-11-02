@@ -3,6 +3,7 @@ import "dotenv/config"
 import cors from "cors"
 import connectDB from "./configs/db.js"
 import userRouter from "./routes/userRoutes.js"
+import ownerRouter from "./routes/ownerRoutes.js"
 
 
 // Initialize express app
@@ -22,6 +23,8 @@ app.get('/', (req, res) => res.send('Server is Running') )
 // routes
 app.use('/api/user', userRouter)
 
+// owner routes
+app.use('/api/owner', ownerRouter)
 
 
 const PORT = process.env.PORT || 3000
