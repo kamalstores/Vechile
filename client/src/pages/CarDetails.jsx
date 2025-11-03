@@ -2,12 +2,16 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import {assets,  dummyCarData } from '../assets/assets'
 import Loader from '../components/Loader'
+import { useAppContext } from '../context/AppContext'
+import toast from 'react-hot-toast'
 
 
 const CarDetails = () => {
 
   // to get car id we use params 
   const {id} = useParams()
+  const {cars, axios, pickupDate, returnDate, setPickupDate, setReturnDate} = useAppContext()
+
   const navigate = useNavigate()
 
   // state variable to store car details
@@ -17,27 +21,27 @@ const CarDetails = () => {
 
   const handleSubmit = async (e) =>{
     e.preventDefault();
-    // try {
-    //   const { data } = await axios.post("/api/bookings/create", {
-    //     car: id,
-    //     pickupDate,
-    //     returnDate,
-    //   });
+    try {
+      const { data } = await axios.post("/api/bookings/create", {
+        car: id,
+        pickupDate,
+        returnDate,
+      });
 
-    //   if (data.success) {
-    //     toast.success(data.message);
-    //     navigate("/my-bookings");
-    //   } else {
-    //     toast.error(data.message);
-    //   }
-    // } catch (error) {
-    //   toast.error(error.message);
-    // }
+      if (data.success) {
+        toast.success(data.message);
+        navigate("/my-bookings");
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
   }
 
   useEffect(() => {
-    setCar(dummyCarData.find((car) => car._id === id));
-  }, [dummyCarData, id]);
+    setCar(cars.find((car) => car._id === id));
+  }, [cars, id]);
 
   return car ? (
     <div className="px-6 md:px-16 lg:px-24 xl:px-32 mt-16">
@@ -169,7 +173,7 @@ const CarDetails = () => {
               Pickup Date
             </label>
             <input
-              // value={pickupDate}
+              value={pickupDate}
               onChange={(e) => setPickupDate(e.target.value)}
               type="date"
               id="pickup-date"
@@ -189,7 +193,7 @@ const CarDetails = () => {
               Return Date
             </label>
             <input
-              // value={returnDate}
+              value={returnDate}
               onChange={(e) => setReturnDate(e.target.value)}
               type="date"
               id="return-date"

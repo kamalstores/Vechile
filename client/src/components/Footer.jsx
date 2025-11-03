@@ -1,28 +1,29 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { assets } from '../assets/assets'
+import { motion } from 'motion/react'
 
 const Footer = () => {
   return (
 
-    <div className="px-6 md:px-16 lg:px-24 xl:px-32 mt-60 text-sm text-gray-500">
+    <motion.div initial={{ opacity: 0, y:30 }} whileInView={{ opacity: 1, y:0 }} transition={{ duration: 0.6}} className="px-6 md:px-16 lg:px-24 xl:px-32 mt-60 text-sm text-gray-500">
 
 
-      <div className="flex flex-wrap justify-between items-start gap-8 pb-6 border-borderColor border-b">
+      <motion.div initial={{ opacity: 0, y:20 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.3}} className="flex flex-wrap justify-between items-start gap-8 pb-6 border-borderColor border-b">
 
         <div>
 
           <Link to="/">
-         <img className="h-8 md:h-9" src={assets.logo} alt="Logo" />
+         <motion.img initial={{ opacity: 0 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="h-8 md:h-9" src={assets.logo} alt="Logo" />
           </Link>
-        
-          <p className="max-w-80 mt-3">
+
+          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.5, delay:0.3 }} className="max-w-80 mt-3">
             Experience premium car rental with a diverse fleet of luxury and
             everyday vehicles tailored for all your driving needs.
-          </p>
+          </motion.p>
 
 
-          <div className="flex items-center gap-3 mt-6">
+          <motion.div initial={{ opacity: 0}} whileInView={{ opacity: 1}} transition={{ duration: 0.5, delay: 0.5 }} className="flex items-center gap-3 mt-6">
             <a href="#">
               {" "}
               <img src={assets.facebook_logo} className="h-5 w-5" alt="" />
@@ -39,11 +40,11 @@ const Footer = () => {
               {" "}
               <img src={assets.gmail_logo} className="h-5 w-5" alt="" />
             </a>
-          </div>
+          </motion.div>
         </div>
 
-
-        <div>
+        <motion.div initial={{ opacity: 0, y:20}} whileInView={{ opacity: 1, y:1}} transition={{ duration: 0.6, delay: 0.4 }} className='flex flex-wrap justify-between w-1/2 gap-8'>
+            <div>
           <h2 className="text-base font-medium text-gray-800 uppercase">
             Quick Links
           </h2>
@@ -100,13 +101,15 @@ const Footer = () => {
             <li>+1 234 567 890</li>
             <li>info@drivenow.com</li>
           </ul>
-        </div>
-      </div>
+        </div>        
+        </motion.div>
+
+    </motion.div>
 
 
 
       {/* <hr className="border-y-gray-700 mt-8 " /> */}
-      <div className="flex flex-col md:flex-row gap-2 items-center justify-between py-5">
+      <motion.div initial={{ opacity: 0, y:10 }} whileInView={{ opacity: 1, y:0 }} transition={{duration:0.6, delay:0.6}} className="flex flex-col md:flex-row gap-2 items-center justify-between py-5">
         <p className="text-center text-sm text-gray-500 mt-1">
           © {new Date().getFullYear()} All rights reserved || This site
           developed by{" "}
@@ -134,8 +137,8 @@ const Footer = () => {
             </li>
           ))}
         </ul>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   )
 }
 

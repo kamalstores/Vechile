@@ -22,7 +22,7 @@ app.get('/', (req, res) => res.send('Server is Running') )
 
 
 // routes
-app.use('/api/user', userRouter)
+app.use('/api/users', userRouter)
 
 // owner routes
 app.use('/api/owner', ownerRouter)

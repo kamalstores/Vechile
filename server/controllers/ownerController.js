@@ -42,8 +42,8 @@ export const addCar = async (req, res) => {
         // get car data from req body
         let car = JSON.parse(req.body.carData);
 
-        // get image
-        const imageFile = req.files
+        // get image (use req.file for single file upload)
+        const imageFile = req.file
 
         // read image file buffer
         const fileBuffer = fs.readFileSync(imageFile.path);

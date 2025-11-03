@@ -4,7 +4,7 @@ import { Car } from "../models/Car.js";
 // function to check availability of car for given dates
 export const checkAvailability = async (carId, pickupDate, returnDate) => {
     const bookings = await Booking.find({
-        car,
+        car: carId,
         pickupDate : {$lte : returnDate},
         returnDate : {$gte : pickupDate}
     })
